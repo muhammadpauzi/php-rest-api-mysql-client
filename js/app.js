@@ -1,15 +1,16 @@
 import { getCardComponent, getSpinnerComponent } from "./components.js";
 import { BASE_URL } from "./constants.js"
-import { cardsGroup, loadMoreButton, totalFounded } from "./elements.js";
+import { cardsGroup, loadMoreButton, searchInput, totalFounded } from "./elements.js";
 import { fetchData, pluralize } from "./utils.js"
 
 let offset = 0;
 let limit = 10;
+let q = '';
 
 const getPosts = async () => {
     const { res, data } = await fetchData({
         base_url: BASE_URL,
-        url: `/posts?offset=${offset}&limit=${limit}`
+        url: `/posts?offset=${offset}&limit=${limit}&q=${q}`
     });
     return data;
 }
@@ -20,8 +21,8 @@ const showPosts = async () => {
     posts.map(post => {
         cards += getCardComponent(post);
     });
-    cardsGroup.innerHTML += cards;
     totalFounded.textContent = `${total} ${pluralize(total, "Post", "Posts")}`;
+    return cards;
 }
 
 loadMoreButton.addEventListener('click', async function () {
@@ -29,9 +30,18 @@ loadMoreButton.addEventListener('click', async function () {
     if (initialTextContent) { // to handle if double click while still fetching data
         this.innerHTML = getSpinnerComponent({ isSmall: true, noPadding: true });
         offset += limit;
-        await showPosts();
+        cardsGroup.innerHTML += await showPosts();
         this.textContent = initialTextContent;
     }
-})
+});
 
-showPosts();
+searchInput.addEventListener('keyup', async function () {
+    q = this.value;
+    cardsGroup.innerHTML = await showPosts();
+});
+
+const main = async () => {
+    cardsGroup.innerHTML = await showPosts();
+}
+
+main()
