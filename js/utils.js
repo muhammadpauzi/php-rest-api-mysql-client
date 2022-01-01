@@ -10,3 +10,7 @@ export const fetchData = ({ base_url = "", url = "", options = {} }) => {
         }
     });
 }
+
+export const pluralize = (value = 0, singleText = "", pluralText = "") => {
+    return value == 1 ? singleText : pluralText;
+}
