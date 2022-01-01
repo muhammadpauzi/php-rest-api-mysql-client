@@ -3,9 +3,9 @@ export const fetchData = ({ base_url = "", url = "", options = {} }) => {
         try {
             const response = await fetch(base_url + url, { ...options });
             const data = await response.json();
-            return resolve({ response: res, data });
+            return resolve({ res: response, data });
         } catch (error) {
-            console.error("Cathched Error :", error);
+            console.error("Catched Error :", error);
             return reject(error);
         }
     });

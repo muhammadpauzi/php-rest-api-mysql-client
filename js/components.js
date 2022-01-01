@@ -1,11 +1,11 @@
-export const getCardComponent = ({ title, date, name, description }) => {
+export const getCardComponent = ({ title, created_at, name, description }) => {
     return `
         <div class="bg-white shadow rounded p-4 block">
             <h3 class="text-lg text-green-500 font-semibold mb-2">
-                <a href="">${title}/a>
+                <a href="">${title}</a>
             </h3>
             <div class="mb-3">
-                <small class="text-gray-500 font-bold">${date}</small>
+                <small class="text-gray-500 font-bold">${created_at}</small>
             </div>
             <p class="text-gray-500 text-sm mb-3">${description}</p>
             <div>
