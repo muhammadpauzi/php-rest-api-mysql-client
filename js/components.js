@@ -14,3 +14,14 @@ export const getCardComponent = ({ title, created_at, name, description }) => {
         </div>
     `;
 }
+
+export const getSpinnerComponent = ({ isSmall, noPadding } = { isSmall: false, noPadding: false }) => {
+    const dimensions = isSmall ? 'h-4 w-4' : 'h-12 w-12';
+    const padding = noPadding ? '' : 'py-10';
+    return `<div class="${padding}">
+            <div class="loader mx-auto ease-linear rounded-full border-2 border-t-2 border-gray-200 ${dimensions}"
+            >
+            <div class="sr-only>Loading...</div>
+        </div>
+    </div>`;
+}
