@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./tailwind.min.css">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+    </style>
+    <title>PHP REST API CLIENT</title>
+</head>
+
+<body>
+
+    <nav>
+        <div class="max-w-4xl mx-auto py-10 px-3 text-center">
+            <a href="" class="my-2 text-3xl font-bold block text-green-500">PHP REST API CLIENT</a>
+            <p class="text-gray-700">This is a client of PHP REST API.</p>
+        </div>
+    </nav>
+
+
+    <div class="max-w-4xl mx-auto py-10 px-3">
+        <div class="py-5 flex gap-2">
+            <div class="w-full">
+                <label for="search" class="text-gray-500 font-bold mb-2 block">Search</label>
+                <input type="text" id="search" class="p-3 block w-full bg-white border-2 border-gray-200 rounded"
+                    placeholder="Enter a keyword...">
+            </div>
+            <div class="w-full flex gap-2">
+                <div class="w-full">
+                    <label for="sort" class="text-gray-500 font-bold mb-2 block">Sort by Date Created</label>
+                    <select name="" id="sort" class="w-full p-3 block bg-white border-2 border-gray-200 rounded">
+                        <option value="">ASC</option>
+                        <option value="">DESC</option>
+                    </select>
+                </div>
+                <div class="w-full">
+                    <label for="limit" class="text-gray-500 font-bold mb-2 block">Show by Limit</label>
+                    <select name="" id="limit" class="w-full p-3 block bg-white border-2 border-gray-200 rounded">
+                        <option value="">20</option>
+                        <option value="">50</option>
+                        <option value="">100</option>
+                        <option value="">200</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-4 space-x-5">
+            <small class="text-gray-500 font-bold">Total Founded : 192 Posts</small>
+            <small class="text-gray-500 font-bold">Total Time : 564ms</small>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2">
+            <div class="bg-white shadow rounded p-4 block">
+                <h3 class="text-lg text-green-500 font-semibold mb-2">
+                    <a href="">First Post</a>
+                </h3>
+                <div class="mb-3">
+                    <small class="text-gray-500 font-bold">1 Jan 2022, Sunday</small>
+                </div>
+                <p class="text-gray-500 text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed totam,
+                    eius
+                    veritatis ad dolores porro! Dignissimos voluptates voluptatum expedita mollitia.</p>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between py-5 my-5">
+            <a href="" class="py-2 text-sm px-3 text-white bg-green-500 rounded font-bold">Previous</a>
+            <a href="" class="py-2 text-sm px-3 text-white bg-green-500 rounded font-bold">Next</a>
+        </div>
+    </div>
+</body>
+
+</html>
