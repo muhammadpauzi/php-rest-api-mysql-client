@@ -1,29 +1,37 @@
 import { getCardComponent, getSpinnerComponent } from "./components.js";
 import { BASE_URL } from "./constants.js"
-import { cardsGroup, totalFounded } from "./elements.js";
+import { cardsGroup, loadMoreButton, totalFounded } from "./elements.js";
 import { fetchData, pluralize } from "./utils.js"
+
+let offset = 0;
+let limit = 50;
 
 const getPosts = async () => {
     const { res, data } = await fetchData({
         base_url: BASE_URL,
-        url: "/posts"
+        url: `/posts?offset=${offset}&limit=${limit}`
     });
     return data;
 }
 
 const showPosts = async () => {
-    // show spinner loading
-    cardsGroup.innerHTML = getSpinnerComponent();
-    // get posts from api
     const { data: posts, total } = await getPosts();
     let cards = ``;
     posts.map(post => {
-        // get card element with parameter that gonne used in card component
         cards += getCardComponent(post);
     });
-    // display all cards into cards group element
-    cardsGroup.innerHTML = cards;
+    cardsGroup.innerHTML += cards;
     totalFounded.textContent = `${total} ${pluralize(total, "Post", "Posts")}`;
 }
+
+loadMoreButton.addEventListener('click', async function () {
+    const initialTextContent = this.textContent;
+    if (initialTextContent) { // to handle if double click while still fetching data
+        this.innerHTML = getSpinnerComponent({ isSmall: true, noPadding: true });
+        offset += limit;
+        await showPosts();
+        this.textContent = initialTextContent;
+    }
+})
 
 showPosts();
