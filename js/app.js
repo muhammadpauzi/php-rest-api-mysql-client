@@ -4,7 +4,7 @@ import { cardsGroup, loadMoreButton, totalFounded } from "./elements.js";
 import { fetchData, pluralize } from "./utils.js"
 
 let offset = 0;
-let limit = 50;
+let limit = 10;
 
 const getPosts = async () => {
     const { res, data } = await fetchData({
